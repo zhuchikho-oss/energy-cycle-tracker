@@ -6,20 +6,18 @@ import datetime
 import pandas as pd
 
 def get_stock_data(ticker_symbol):
-    """通过 yfinance 提取港股股价及 20 日均线 (SMA20)"""
     try:
         stock = yf.Ticker(ticker_symbol)
-        # 修正：1个月的正确参数是 "1mo"
-        df = stock.history(period="1mo") 
+        df = stock.history(period="1mo")
         if df.empty:
             return None
         
-        latest_price = round(df['Close'].iloc[-1], 3)
-        sma20 = round(df['Close'].rolling(window=min(len(df), 20)).mean().iloc[-1], 3)
+        latest_price = round(float(df['Close'].iloc[-1]), 3)
+        sma20 = round(float(df['Close'].rolling(window=min(len(df), 20)).mean().iloc[-1]), 3)
         
         pct_change = 0.0
         if len(df) >= 2:
-            pct_change = round(((latest_price - df['Close'].iloc[-2]) / df['Close'].iloc[-2]) * 100, 2)
+            pct_change = round(((latest_price - float(df['Close'].iloc[-2])) / float(df['Close'].iloc[-2])) * 100, 2)
         
         return {
             "price": latest_price,
@@ -31,23 +29,20 @@ def get_stock_data(ticker_symbol):
         return None
 
 def get_lithium_price():
-    """获取碳酸锂参考价格 (元/吨)"""
     try:
         url = "https://hq.sinajs.cn/list=nf_LC0"
-        headers = {'Referer': 'https://finance.sina.com.cn'}
+        headers = {'Referer': 'https://finance.sina.com.cn', 'User-Agent': 'Mozilla/5.0'}
         res = requests.get(url, headers=headers, timeout=10)
         if res.status_code == 200 and '="' in res.text:
             data_str = res.text.split('="')[1].split('";')[0]
             fields = data_str.split(',')
-            if len(fields) > 8:
-                current_price = float(fields[8])
-                return current_price
+            if len(fields) > 8 and fields[8] != '':
+                return float(fields[8])
     except Exception as e:
         print(f"获取碳酸锂价格失败，使用备用参考价: {e}")
-    return 78000.0  # 备用参考底价 (元/吨)
+    return 94760.0
 
 def get_uranium_price():
-    """获取天然铀 (Uranium) 现货参考报价 (美元/磅)"""
     try:
         url = "https://tradingeconomics.com/commodity/uranium"
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
@@ -58,26 +53,21 @@ def get_uranium_price():
             if price_element:
                 return float(price_element.text.strip())
     except Exception as e:
-        print(f"抓取天然铀价格失败: {e}")
-    return 85.0  # 备用参考价 (美元/磅)
+        print(f"抓取天然铀价格失败，使用备用参考价: {e}")
+    return 85.0
 
 def analyze_signals():
     today_str = datetime.date.today().strftime("%Y-%m-%d")
     print(f"=== 运行能源周期套利分析器 [{today_str}] ===")
     
     # 1. 分析天然铀板块 (中广核矿业 1164.HK)
-    # 修正：yfinance 对中广核矿业代码支持为 1164.HK
-    cgn_stock = get_stock_data("1164.HK")
-    if not cgn_stock:
-        cgn_stock = get_stock_data("01164.HK") # 备用尝试
-        
+    cgn_stock = get_stock_data("1164.HK") or get_stock_data("01164.HK")
     uranium_p = get_uranium_price()
     
     uranium_analysis = {}
-    if cgn_stock and uranium_p:
+    if cgn_stock:
         ratio = round((cgn_stock['price'] / uranium_p) * 1000, 2)
         signal = "观望"
-        
         if cgn_stock['price'] < cgn_stock['sma20'] * 0.95:
             signal = "🟢 出现低吸/超跌信号 (偏离均线>5%)"
         elif cgn_stock['price'] > cgn_stock['sma20'] * 1.15:
@@ -93,14 +83,11 @@ def analyze_signals():
         }
 
     # 2. 分析锂电池板块 (赣锋锂业 1772.HK)
-    ganfeng_stock = get_stock_data("1772.HK")
-    if not ganfeng_stock:
-        ganfeng_stock = get_stock_data("01772.HK")
-        
+    ganfeng_stock = get_stock_data("1772.HK") or get_stock_data("01772.HK")
     lithium_p = get_lithium_price()
     
     lithium_analysis = {}
-    if ganfeng_stock and lithium_p:
+    if ganfeng_stock:
         ratio_li = round((ganfeng_stock['price'] / (lithium_p / 10000)), 2)
         signal_li = "观望"
         if ganfeng_stock['price'] < ganfeng_stock['sma20'] * 0.93:
