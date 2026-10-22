@@ -1,31 +1,11 @@
 {
-  "updated_at": "2026-10-22 04:46:24",
-  "total_items": 5,
+  "updated_at": "2026-10-22 04:56:13",
+  "total_items": 20,
   "data": [
-    {
-      "category": "天然铀龙头",
-      "stock_name": "中广核矿业",
-      "stock_price": 2.02,
-      "change_pct": "-3.12%",
-      "commodity_price": "85.0 $/lb",
-      "implied_price": "HK$ 0.5",
-      "cost_line": "40.0 $/lb",
-      "signal": "🔴 追高预警 (透支基本面/严重超买)"
-    },
-    {
-      "category": "锂电池巨头",
-      "stock_name": "赣锋锂业",
-      "stock_price": 22.34,
-      "change_pct": "-0.62%",
-      "commodity_price": "95000.0 元/吨",
-      "implied_price": "HK$ 16.12",
-      "cost_line": "75000.0 元/吨",
-      "signal": "🟢 技术面低吸 (偏离20日均线)"
-    },
     {
       "category": "铜金超巨",
       "stock_name": "紫金矿业",
-      "stock_price": 29.54,
+      "stock_price": "HK$ 29.54",
       "change_pct": "-3.78%",
       "commodity_price": "4.35 $/磅",
       "implied_price": "HK$ 2.14",
@@ -33,9 +13,109 @@
       "signal": "🟢 技术面低吸 (偏离20日均线)"
     },
     {
-      "category": "现货高弹性煤",
+      "category": "铜钴龙头",
+      "stock_name": "洛阳钼业",
+      "stock_price": "HK$ 12.96",
+      "change_pct": "-5.05%",
+      "commodity_price": "4.35 $/磅",
+      "implied_price": "HK$ 1.43",
+      "cost_line": "2.1 $/磅",
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
+    },
+    {
+      "category": "铜业老牌",
+      "stock_name": "江西铜业",
+      "stock_price": "HK$ 29.08",
+      "change_pct": "-3.9%",
+      "commodity_price": "4.35 $/磅",
+      "implied_price": "HK$ 1.48",
+      "cost_line": "2.8 $/磅",
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
+    },
+    {
+      "category": "海外铜锌",
+      "stock_name": "五矿资源",
+      "stock_price": "HK$ 7.115",
+      "change_pct": "-4.75%",
+      "commodity_price": "4.35 $/磅",
+      "implied_price": "HK$ 1.02",
+      "cost_line": "2.5 $/磅",
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
+    },
+    {
+      "category": "美股铜巨",
+      "stock_name": "麦克莫兰铜金",
+      "stock_price": "$ 68.9",
+      "change_pct": "0.04%",
+      "commodity_price": "4.35 $/磅",
+      "implied_price": "$ 103.02",
+      "cost_line": "1.6 $/磅",
+      "signal": "观望"
+    },
+    {
+      "category": "天然铀纯标",
+      "stock_name": "中广核矿业",
+      "stock_price": "HK$ 2.02",
+      "change_pct": "-3.12%",
+      "commodity_price": "85.0 $/lb",
+      "implied_price": "HK$ 0.5",
+      "cost_line": "40.0 $/lb",
+      "signal": "🔴 追高预警 (透支基本面/严重超买)"
+    },
+    {
+      "category": "锂盐龙头",
+      "stock_name": "赣锋锂业",
+      "stock_price": "HK$ 22.34",
+      "change_pct": "-0.62%",
+      "commodity_price": "95000.0 元/吨",
+      "implied_price": "HK$ 16.12",
+      "cost_line": "75000.0 元/吨",
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
+    },
+    {
+      "category": "锂矿巨头",
+      "stock_name": "天齐锂业",
+      "stock_price": "HK$ 22.9",
+      "change_pct": "-2.72%",
+      "commodity_price": "95000.0 元/吨",
+      "implied_price": "HK$ 23.05",
+      "cost_line": "60000.0 元/吨",
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
+    },
+    {
+      "category": "铀现货信托",
+      "stock_name": "Sprott铀信托",
+      "stock_price": "$ 18.86",
+      "change_pct": "0.05%",
+      "commodity_price": "85.0 $/lb",
+      "implied_price": "$ 46.3",
+      "cost_line": "50.0 $/lb",
+      "signal": "观望"
+    },
+    {
+      "category": "美股铀巨",
+      "stock_name": "Cameco",
+      "stock_price": "$ 82.02",
+      "change_pct": "1.88%",
+      "commodity_price": "85.0 $/lb",
+      "implied_price": "$ 152.04",
+      "cost_line": "35.0 $/lb",
+      "signal": "观望"
+    },
+    {
+      "category": "上游油气",
+      "stock_name": "中国海洋石油",
+      "stock_price": "HK$ 22.92",
+      "change_pct": "-4.18%",
+      "commodity_price": "75.0 $/桶",
+      "implied_price": "HK$ 30.15",
+      "cost_line": "30.0 $/桶",
+      "signal": "观望"
+    },
+    {
+      "category": "弹性动力煤",
       "stock_name": "兖矿能源",
-      "stock_price": 10.2,
+      "stock_price": "HK$ 10.2",
       "change_pct": "-2.86%",
       "commodity_price": "840.0 元/吨",
       "implied_price": "HK$ 41.72",
@@ -43,14 +123,84 @@
       "signal": "🟢 黄金级低吸 (基本面重度低估+超跌)"
     },
     {
-      "category": "纯上游原油",
-      "stock_name": "中国海洋石油",
-      "stock_price": 22.92,
-      "change_pct": "-4.18%",
-      "commodity_price": "75.0 $/桶",
-      "implied_price": "HK$ 30.15",
-      "cost_line": "30.0 $/桶",
+      "category": "防守动力煤",
+      "stock_name": "中国神华",
+      "stock_price": "HK$ 38.92",
+      "change_pct": "-3.23%",
+      "commodity_price": "840.0 元/吨",
+      "implied_price": "HK$ 58.18",
+      "cost_line": "360.0 元/吨",
+      "signal": "🟢 黄金级低吸 (基本面重度低估+超跌)"
+    },
+    {
+      "category": "焦煤龙头",
+      "stock_name": "首钢资源",
+      "stock_price": "HK$ 2.44",
+      "change_pct": "-5.97%",
+      "commodity_price": "1750.0 元/吨",
+      "implied_price": "HK$ 6.8",
+      "cost_line": "650.0 元/吨",
+      "signal": "🟢 黄金级低吸 (基本面重度低估+超跌)"
+    },
+    {
+      "category": "综合动力煤",
+      "stock_name": "中煤能源",
+      "stock_price": "HK$ 9.505",
+      "change_pct": "-2.86%",
+      "commodity_price": "840.0 元/吨",
+      "implied_price": "HK$ 26.59",
+      "cost_line": "390.0 元/吨",
+      "signal": "🟢 黄金级低吸 (基本面重度低估+超跌)"
+    },
+    {
+      "category": "美股天然气",
+      "stock_name": "EQT能源",
+      "stock_price": "$ 54.07",
+      "change_pct": "-1.37%",
+      "commodity_price": "2.85 $/MMBtu",
+      "implied_price": "$ 42.95",
+      "cost_line": "1.8 $/MMBtu",
       "signal": "观望"
+    },
+    {
+      "category": "纯金采掘",
+      "stock_name": "招金矿业",
+      "stock_price": "HK$ 16.59",
+      "change_pct": "-5.63%",
+      "commodity_price": "2720.0 $/盎司",
+      "implied_price": "HK$ 167.79",
+      "cost_line": "1250.0 $/盎司",
+      "signal": "🟢 黄金级低吸 (基本面重度低估+超跌)"
+    },
+    {
+      "category": "国资黄金",
+      "stock_name": "山东黄金",
+      "stock_price": "HK$ 17.56",
+      "change_pct": "-4.67%",
+      "commodity_price": "2720.0 $/盎司",
+      "implied_price": "HK$ 188.75",
+      "cost_line": "1350.0 $/盎司",
+      "signal": "🟢 黄金级低吸 (基本面重度低估+超跌)"
+    },
+    {
+      "category": "美股纯白银",
+      "stock_name": "奋进银业",
+      "stock_price": "$ 8.31",
+      "change_pct": "1.34%",
+      "commodity_price": "32.5 $/盎司",
+      "implied_price": "$ 197.54",
+      "cost_line": "21.0 $/盎司",
+      "signal": "观望"
+    },
+    {
+      "category": "稀土龙头",
+      "stock_name": "中国稀土",
+      "stock_price": "HK$ 5.28",
+      "change_pct": "-1.68%",
+      "commodity_price": "420.0 元/公斤",
+      "implied_price": "HK$ 4.01",
+      "cost_line": "320.0 元/公斤",
+      "signal": "🔴 追高预警 (透支基本面/严重超买)"
     }
   ]
 }
