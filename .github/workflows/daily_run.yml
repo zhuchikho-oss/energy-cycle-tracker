@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # 拉取完整提交历史，避免浅克隆导致 rebase 失败
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v5
