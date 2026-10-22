@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 拉取完整历史，确保 rebase 不报错
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -33,3 +35,4 @@ jobs:
       with:
         commit_message: "Auto-update energy cycle data [skip ci]"
         file_pattern: "latest_data.json"
+        auto_fetch: true
