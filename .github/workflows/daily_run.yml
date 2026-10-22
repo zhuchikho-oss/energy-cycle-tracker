@@ -14,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -31,10 +29,7 @@ jobs:
       run: python tracker.py
 
     - name: Commit and Push Updated Data
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action Bot"
-        git add latest_data.json
-        git commit -m "Auto-update energy cycle data [skip ci]" || exit 0
-        git pull --rebase origin main || git rebase --skip
-        git push origin main
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Auto-update energy cycle data [skip ci]"
+        file_pattern: "latest_data.json"
