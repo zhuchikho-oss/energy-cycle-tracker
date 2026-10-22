@@ -34,4 +34,5 @@ jobs:
         git config --local user.name "GitHub Action Bot"
         git add latest_data.json
         git commit -m "Auto-update energy cycle data [skip ci]" || exit 0
+        git pull --rebase origin main
         git push
