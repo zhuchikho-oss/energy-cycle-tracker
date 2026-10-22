@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>能源周期套利分析仪表盘</title>
+  <style>
+    :root {
+      --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc;
+      --text-sub: #94a3b8; --green: #22c55e; --red: #ef4444; --border: #334155;
+    }
+    body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); padding: 20px; margin: 0; }
+    .container { max-width: 600px; margin: 0 auto; }
+    h1 { font-size: 20px; text-align: center; margin-bottom: 5px; }
+    .time { text-align: center; font-size: 12px; color: var(--text-sub); margin-bottom: 20px; }
+    .card { background: var(--card-bg); border-radius: 12px; padding: 16px; margin-bottom: 16px; border: 1px solid var(--border); }
+    .title { font-weight: bold; font-size: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; }
+    .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+    .val { font-weight: 600; }
+    .badge { padding: 8px 12px; border-radius: 6px; font-weight: bold; text-align: center; margin-top: 12px; }
+    .green { background: rgba(34,197,94,0.2); color: var(--green); border: 1px solid var(--green); }
+    .red { background: rgba(239,68,68,0.2); color: var(--red); border: 1px solid var(--red); }
+    .neutral { background: rgba(148,163,184,0.1); color: var(--text-sub); border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ 能源周期套利监控</h1>
+    <div class="time" id="update-time">更新时间：加载中...</div>
+
+    <div class="card" id="uranium-card">
+      <div class="title"><span>中广核矿业 (01164.HK)</span><span id="u-stock">--</span></div>
+      <div class="row"><span>天然铀现货价:</span><span id="u-spot" class="val">--</span></div>
+      <div class="row"><span>背离比率指数:</span><span id="u-ratio" class="val">--</span></div>
+      <div class="badge neutral" id="u-signal">加载中...</div>
+    </div>
+
+    <div class="card" id="lithium-card">
+      <div class="title"><span>赣锋锂业 (01772.HK)</span><span id="l-stock">--</span></div>
+      <div class="row"><span>碳酸锂期货价:</span><span id="l-spot" class="val">--</span></div>
+      <div class="row"><span>背离比率指数:</span><span id="l-ratio" class="val">--</span></div>
+      <div class="badge neutral" id="l-signal">加载中...</div>
+    </div>
+  </div>
+
+  <script>
+    async function loadData() {
+      try {
+        const res = await fetch('./latest_data.json?t=' + Date.now());
+        const data = await res.json();
+        
+        document.getElementById('update-time').innerText = '更新时间：' + data.updated_at;
+        
+        // 铀板块
+        const u = data.uranium_sector;
+        if(u) {
+          document.getElementById('u-stock').innerText = 'HK$ ' + u.stock_price;
+          document.getElementById('u-spot').innerText = u.uranium_spot_price;
+          document.getElementById('u-ratio').innerText = u.ratio_index;
+          setSignal('u-signal', u.signal);
+        }
+
+        // 锂板块
+        const l = data.lithium_sector;
+        if(l) {
+          document.getElementById('l-stock').innerText = 'HK$ ' + l.stock_price;
+          document.getElementById('l-spot').innerText = l.lithium_futures_price;
+          document.getElementById('l-ratio').innerText = l.ratio_index;
+          setSignal('l-signal', l.signal);
+        }
+      } catch (e) {
+        document.getElementById('update-time').innerText = '加载失败，请确保 latest_data.json 存在';
+      }
+    }
+
+    function setSignal(elemId, signal) {
+      const el = document.getElementById(elemId);
+      el.innerText = signal;
+      el.className = 'badge ';
+      if(signal.includes('低吸')) el.classList.add('green');
+      else if(signal.includes('追高')) el.classList.add('red');
+      else el.classList.add('neutral');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
