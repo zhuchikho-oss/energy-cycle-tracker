@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P*C*Q 周期股基本面与技术面联合套利监控</title>
+  <title>P*C*Q 周期股基本面套利与全网低吸扫描器</title>
   <style>
     :root {
       --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc;
-      --text-sub: #94a3b8; --green: #22c55e; --red: #ef4444; --border: #334155; --accent: #38bdf8;
+      --text-sub: #94a3b8; --green: #22c55e; --red: #ef4444; --border: #334155; --accent: #38bdf8; --star: #f59e0b;
     }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 16px; margin: 0; }
     .container { max-width: 1100px; margin: 0 auto; }
     h1 { font-size: 22px; text-align: center; margin-bottom: 8px; }
+    .section-title { font-size: 18px; font-weight: bold; margin: 24px 0 12px 0; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
     .toolbar { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 20px; }
     .subtitle { font-size: 13px; color: var(--text-sub); }
     .btn-refresh { background: var(--accent); color: #0f172a; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-    .card { background: var(--card-bg); border-radius: 12px; padding: 16px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .card { background: var(--card-bg); border-radius: 12px; padding: 16px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: relative; }
     .category-tag { font-size: 11px; background: rgba(148,163,184,0.15); color: var(--text-sub); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
-    .stock-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .star-btn { position: absolute; top: 14px; right: 14px; background: none; border: none; color: var(--text-sub); cursor: pointer; font-size: 18px; }
+    .star-btn.starred { color: var(--star); }
+    .stock-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-right: 24px; }
     .stock-name { font-weight: bold; font-size: 15px; }
     .stock-price { font-size: 16px; font-weight: bold; color: var(--accent); }
     .info-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; color: var(--text-sub); }
@@ -28,21 +31,75 @@
     .green { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid var(--green); }
     .red { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid var(--red); }
     .neutral { background: rgba(148,163,184,0.1); color: var(--text-sub); border: 1px solid var(--border); }
+    .empty-msg { color: var(--text-sub); font-size: 13px; text-align: center; grid-column: 1 / -1; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 8px; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>⚡ 全大宗周期 20 大标的套利监控面板</h1>
+    <h1>⚡ 全大宗周期套利与全网低吸扫描器</h1>
     
     <div class="toolbar">
-      <div class="subtitle" id="update-time">数据请求中...</div>
-      <button class="btn-refresh" onclick="fetchTrackerData()">⚡ 立即刷新</button>
+      <div class="subtitle" id="update-time">数据加载中...</div>
+      <button class="btn-refresh" onclick="fetchTrackerData()">⚡ 刷新页面</button>
     </div>
 
+    <!-- 收藏自选区 -->
+    <div class="section-title">⭐ 我的自选关注标的</div>
+    <div class="grid" id="favorites-container"></div>
+
+    <!-- 全网扫描低吸发现区 -->
+    <div class="section-title">🔍 全网盘中低吸潜力股扫描发现区 (仅低吸信号)</div>
+    <div class="grid" id="discovered-container"></div>
+
+    <!-- 核心监控全景图 -->
+    <div class="section-title">📊 核心资源监控池全景</div>
     <div class="grid" id="cards-container"></div>
   </div>
 
   <script>
+    let favoriteTickers = JSON.parse(localStorage.getItem('fav_tickers') || '[]');
+
+    function toggleFavorite(ticker) {
+      if (favoriteTickers.includes(ticker)) {
+        favoriteTickers = favoriteTickers.filter(t => t !== ticker);
+      } else {
+        favoriteTickers.push(ticker);
+      }
+      localStorage.setItem('fav_tickers', JSON.stringify(favoriteTickers));
+      fetchTrackerData();
+    }
+
+    function createCardHTML(item) {
+      const isFav = favoriteTickers.includes(item.ticker);
+      let signalClass = 'neutral';
+      if(item.signal.includes('低吸')) signalClass = 'green';
+      if(item.signal.includes('追高')) signalClass = 'red';
+
+      return `
+        <div class="card">
+          <button class="star-btn ${isFav ? 'starred' : ''}" onclick="toggleFavorite('${item.ticker}')">★</button>
+          <span class="category-tag">${item.category}</span>
+          <div class="stock-header">
+            <span class="stock-name">${item.stock_name} (${item.ticker})</span>
+            <span class="stock-price">${item.stock_price} <small style="font-size:10px; color:${item.change_pct.includes('-')?'#ef4444':'#22c55e'}">${item.change_pct}</small></span>
+          </div>
+          <div class="info-row">
+            <span>上游现货价 (P):</span>
+            <span class="info-val">${item.commodity_price}</span>
+          </div>
+          <div class="info-row">
+            <span>生产成本线 (C):</span>
+            <span class="info-val">${item.cost_line}</span>
+          </div>
+          <div class="info-row">
+            <span>P*C*Q 隐含合理股价:</span>
+            <span class="highlight-val">${item.implied_price}</span>
+          </div>
+          <div class="badge ${signalClass}">${item.signal}</div>
+        </div>
+      `;
+    }
+
     async function fetchTrackerData() {
       const timeElem = document.getElementById('update-time');
       timeElem.innerText = '拉取最新数据中...';
@@ -51,40 +108,37 @@
         const res = await fetch('./latest_data.json?t=' + Date.now(), { cache: 'no-store' });
         const json = await res.json();
         
-        timeElem.innerText = `数据时间：${json.updated_at} (监控 ${json.total_items || json.data.length} 个标的)`;
+        timeElem.innerText = `数据时间：${json.updated_at} (核心监控 ${json.total_items} 个 | 扫描低吸 ${json.discovered_count} 个)`;
         
-        const container = document.getElementById('cards-container');
-        container.innerHTML = '';
+        const favContainer = document.getElementById('favorites-container');
+        const discContainer = document.getElementById('discovered-container');
+        const coreContainer = document.getElementById('cards-container');
 
-        json.data.forEach(item => {
-          let signalClass = 'neutral';
-          if(item.signal.includes('低吸')) signalClass = 'green';
-          if(item.signal.includes('追高')) signalClass = 'red';
+        favContainer.innerHTML = '';
+        discContainer.innerHTML = '';
+        coreContainer.innerHTML = '';
 
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <span class="category-tag">${item.category}</span>
-            <div class="stock-header">
-              <span class="stock-name">${item.stock_name}</span>
-              <span class="stock-price">${item.stock_price} <small style="font-size:10px; color:${item.change_pct.includes('-')?'#ef4444':'#22c55e'}">${item.change_pct}</small></span>
-            </div>
-            <div class="info-row">
-              <span>上游现货价 (P):</span>
-              <span class="info-val">${item.commodity_price}</span>
-            </div>
-            <div class="info-row">
-              <span>生产成本线 (C):</span>
-              <span class="info-val">${item.cost_line}</span>
-            </div>
-            <div class="info-row">
-              <span>P*C*Q 隐含合理股价:</span>
-              <span class="highlight-val">${item.implied_price}</span>
-            </div>
-            <div class="badge ${signalClass}">${item.signal}</div>
-          `;
-          container.appendChild(card);
-        });
+        // 所有标的合集用于收藏匹配
+        const allItems = [...json.data, ...(json.discovered_data || [])];
+        const favItems = allItems.filter(item => favoriteTickers.includes(item.ticker));
+
+        // 渲染收藏夹
+        if (favItems.length === 0) {
+          favContainer.innerHTML = '<div class="empty-msg">暂无自选标的，点击卡片右上角 ★ 收藏关注。</div>';
+        } else {
+          favItems.forEach(item => favContainer.innerHTML += createCardHTML(item));
+        }
+
+        // 渲染全网扫描发现低吸区
+        if (!json.discovered_data || json.discovered_data.length === 0) {
+          discContainer.innerHTML = '<div class="empty-msg">本次全网扫描未发现新的低吸信号标的。</div>';
+        } else {
+          json.discovered_data.forEach(item => discContainer.innerHTML += createCardHTML(item));
+        }
+
+        // 渲染核心监控区
+        json.data.forEach(item => coreContainer.innerHTML += createCardHTML(item));
+
       } catch (e) {
         timeElem.innerText = '加载失败。';
       }
