@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P*C*Q 周期股基本面套利与全网低吸扫描器</title>
+  <title>机构级 4 大价值模型套利终端</title>
   <style>
     :root {
       --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc;
@@ -12,7 +12,7 @@
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 16px; margin: 0; }
     .container { max-width: 1100px; margin: 0 auto; }
     h1 { font-size: 22px; text-align: center; margin-bottom: 8px; }
-    .section-title { font-size: 18px; font-weight: bold; margin: 24px 0 12px 0; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .section-title { font-size: 17px; font-weight: bold; margin: 24px 0 12px 0; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
     .toolbar { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 20px; }
     .subtitle { font-size: 13px; color: var(--text-sub); }
     .btn-refresh { background: var(--accent); color: #0f172a; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px; }
@@ -36,23 +36,23 @@
 </head>
 <body>
   <div class="container">
-    <h1>⚡ 全大宗周期套利与全网低吸扫描器</h1>
+    <h1>🏛️ 机构级 4 大价值模型套利终端</h1>
     
     <div class="toolbar">
       <div class="subtitle" id="update-time">数据加载中...</div>
-      <button class="btn-refresh" onclick="fetchTrackerData()">⚡ 刷新页面</button>
+      <button class="btn-refresh" onclick="fetchTrackerData()">⚡ 刷新数据</button>
     </div>
 
-    <!-- 收藏自选区 -->
-    <div class="section-title">⭐ 我的自选关注标的</div>
+    <!-- 收藏区 -->
+    <div class="section-title">⭐ 我的核心自选股</div>
     <div class="grid" id="favorites-container"></div>
 
-    <!-- 全网扫描低吸发现区 -->
-    <div class="section-title">🔍 全网盘中低吸潜力股扫描发现区 (仅低吸信号)</div>
+    <!-- 低吸发现区 -->
+    <div class="section-title">🔍 全网盘中低吸潜力股扫描区 (DCF+NAV+PCQ联合估值)</div>
     <div class="grid" id="discovered-container"></div>
 
-    <!-- 核心监控全景图 -->
-    <div class="section-title">📊 核心资源监控池全景</div>
+    <!-- 核心监控区 -->
+    <div class="section-title">📊 核心资源监控池 (4大模型内在价值)</div>
     <div class="grid" id="cards-container"></div>
   </div>
 
@@ -92,7 +92,7 @@
             <span class="info-val">${item.cost_line}</span>
           </div>
           <div class="info-row">
-            <span>P*C*Q 隐含合理股价:</span>
+            <span>4大模型内在价值:</span>
             <span class="highlight-val">${item.implied_price}</span>
           </div>
           <div class="badge ${signalClass}">${item.signal}</div>
@@ -118,25 +118,21 @@
         discContainer.innerHTML = '';
         coreContainer.innerHTML = '';
 
-        // 所有标的合集用于收藏匹配
         const allItems = [...json.data, ...(json.discovered_data || [])];
         const favItems = allItems.filter(item => favoriteTickers.includes(item.ticker));
 
-        // 渲染收藏夹
         if (favItems.length === 0) {
           favContainer.innerHTML = '<div class="empty-msg">暂无自选标的，点击卡片右上角 ★ 收藏关注。</div>';
         } else {
           favItems.forEach(item => favContainer.innerHTML += createCardHTML(item));
         }
 
-        // 渲染全网扫描发现低吸区
         if (!json.discovered_data || json.discovered_data.length === 0) {
-          discContainer.innerHTML = '<div class="empty-msg">本次全网扫描未发现新的低吸信号标的。</div>';
+          discContainer.innerHTML = '<div class="empty-msg">本次全网扫描未发现符合 4 大模型低吸信号的标的。</div>';
         } else {
           json.discovered_data.forEach(item => discContainer.innerHTML += createCardHTML(item));
         }
 
-        // 渲染核心监控区
         json.data.forEach(item => coreContainer.innerHTML += createCardHTML(item));
 
       } catch (e) {
