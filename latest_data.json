@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-10-22 09:36:56",
+  "updated_at": "2026-10-22 02:34:15",
   "uranium_sector": {
     "stock_name": "中广核矿业 (01164.HK)",
-    "stock_price": 2.085,
-    "stock_change_pct": "2.46%",
+    "stock_price": 2.02,
+    "stock_change_pct": "-3.12%",
     "uranium_spot_price": "$85.0/lb",
-    "ratio_index": 24.53,
+    "ratio_index": 23.76,
     "signal": "观望"
   },
   "lithium_sector": {
     "stock_name": "赣锋锂业 (01772.HK)",
-    "stock_price": 22.48,
-    "lithium_futures_price": "¥94760.0/吨",
-    "ratio_index": 2.37,
+    "stock_price": 22.26,
+    "lithium_futures_price": "¥93580.0/吨",
+    "ratio_index": 2.38,
     "signal": "🟢 出现低吸/超跌信号"
   }
 }
