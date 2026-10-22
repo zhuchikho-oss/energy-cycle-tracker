@@ -6,14 +6,18 @@ on:
     - cron: '30 8 * * 1-5'
   workflow_dispatch:
 
+# 显式声明赋予 GitHub Actions 写入仓库的权限
+permissions:
+  contents: write
+
 jobs:
   run-tracker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
