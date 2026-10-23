@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>机构级 4 大价值模型套利终端</title>
+  <title>机构级 4 大价值模型套利 & 全球能源需求终端</title>
   <style>
     :root {
       --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc;
@@ -13,9 +13,18 @@
     .container { max-width: 1100px; margin: 0 auto; }
     h1 { font-size: 22px; text-align: center; margin-bottom: 8px; }
     .section-title { font-size: 17px; font-weight: bold; margin: 24px 0 12px 0; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-    .toolbar { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .toolbar { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 16px; }
     .subtitle { font-size: 13px; color: var(--text-sub); }
     .btn-refresh { background: var(--accent); color: #0f172a; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px; }
+    
+    /* 需求仪表盘样式 */
+    .dashboard-panel { background: rgba(30, 41, 59, 0.8); border: 1px solid var(--accent); border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+    .top-demand-banner { font-size: 15px; font-weight: bold; color: var(--star); margin-bottom: 12px; display: flex; justify-content: space-between; }
+    .demand-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+    .demand-item { background: rgba(15, 23, 42, 0.6); padding: 10px; border-radius: 8px; border: 1px solid var(--border); font-size: 12px; }
+    .demand-header { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px; color: var(--text); }
+    .demand-score { color: #f43f5e; font-weight: bold; }
+
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
     .card { background: var(--card-bg); border-radius: 12px; padding: 16px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: relative; }
     .category-tag { font-size: 11px; background: rgba(148,163,184,0.15); color: var(--text-sub); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
@@ -36,11 +45,20 @@
 </head>
 <body>
   <div class="container">
-    <h1>🏛️ 机构级 4 大价值模型套利终端</h1>
+    <h1>🏛️ 机构级 4 大价值模型 & 全球能源需求终端</h1>
     
     <div class="toolbar">
       <div class="subtitle" id="update-time">数据加载中...</div>
       <button class="btn-refresh" onclick="fetchTrackerData()">⚡ 刷新数据</button>
+    </div>
+
+    <!-- 能源需求仪表盘 -->
+    <div class="dashboard-panel">
+      <div class="top-demand-banner">
+        <span>🔥 当前全球需求最旺盛原料：<span id="top-material" style="color:#38bdf8;">拉取中...</span></span>
+        <span style="font-size:12px; color:var(--text-sub);">已按需求量大小优先级对潜力股排序</span>
+      </div>
+      <div class="demand-grid" id="demand-grid"></div>
     </div>
 
     <!-- 收藏区 -->
@@ -48,7 +66,7 @@
     <div class="grid" id="favorites-container"></div>
 
     <!-- 低吸发现区 -->
-    <div class="section-title">🔍 全网盘中低吸潜力股扫描区 (实际股价对比内在价值)</div>
+    <div class="section-title">🔍 全网盘中低吸潜力股扫描区 (优先检索高需求原料股)</div>
     <div class="grid" id="discovered-container"></div>
 
     <!-- 核心监控区 -->
@@ -78,7 +96,7 @@
       return `
         <div class="card">
           <button class="star-btn ${isFav ? 'starred' : ''}" onclick="toggleFavorite('${item.ticker}')">★</button>
-          <span class="category-tag">${item.category}</span>
+          <span class="category-tag">${item.category} | 需求热度:${item.demand_score}</span>
           <div class="stock-header">
             <span class="stock-name">${item.stock_name} (${item.ticker})</span>
           </div>
@@ -113,7 +131,24 @@
         const json = await res.json();
         
         timeElem.innerText = `数据时间：${json.updated_at} (核心监控 ${json.total_items} 个 | 扫描低吸 ${json.discovered_count} 个)`;
-        
+        document.getElementById('top-material').innerText = json.top_demand_material;
+
+        // 渲染需求仪表盘
+        const demandGrid = document.getElementById('demand-grid');
+        demandGrid.innerHTML = '';
+        for (const [key, item] of Object.entries(json.demand_dashboard)) {
+          demandGrid.innerHTML += `
+            <div class="demand-item">
+              <div class="demand-header">
+                <span>${item.name}</span>
+                <span class="demand-score">指数:${item.demand_score}</span>
+              </div>
+              <div style="color:var(--text-sub); margin-bottom:2px;">现货: ${item.price} ${item.unit}</div>
+              <div style="color:#64748b; font-size:11px;">${item.desc}</div>
+            </div>
+          `;
+        }
+
         const favContainer = document.getElementById('favorites-container');
         const discContainer = document.getElementById('discovered-container');
         const coreContainer = document.getElementById('cards-container');
