@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23 00:15:31",
+  "updated_at": "2026-10-23 00:40:07",
   "total_items": 15,
   "discovered_count": 1,
   "data": [
@@ -10,9 +10,9 @@
       "stock_price": "HK$ 29.1",
       "change_pct": "-5.21%",
       "commodity_price": "4.35 $/磅",
-      "implied_price": "HK$ 215490.73",
+      "implied_price": "HK$ 1.7",
       "cost_line": "2.2 $/磅",
-      "signal": "🟢 黄金级低吸 (4大模型重度低估+超跌)"
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
     },
     {
       "category": "美股纯铜",
@@ -21,7 +21,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "4.35 $/磅",
-      "implied_price": "$ 5550167.31",
+      "implied_price": "$ 77.12",
       "cost_line": "1.6 $/磅",
       "signal": "观望"
     },
@@ -32,7 +32,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "4.35 $/磅",
-      "implied_price": "$ 4352070.7",
+      "implied_price": "$ 96.17",
       "cost_line": "1.2 $/磅",
       "signal": "观望"
     },
@@ -43,7 +43,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "2500.0 $/吨",
-      "implied_price": "$ 41666703.07",
+      "implied_price": "$ 38.21",
       "cost_line": "2100.0 $/吨",
       "signal": "观望"
     },
@@ -54,9 +54,9 @@
       "stock_price": "HK$ 1.975",
       "change_pct": "-5.28%",
       "commodity_price": "85.0 $/lb",
-      "implied_price": "HK$ 35738.35",
+      "implied_price": "HK$ 0.5",
       "cost_line": "40.0 $/lb",
-      "signal": "观望"
+      "signal": "🔴 追高预警 (透支基本面/严重超买)"
     },
     {
       "category": "美股铀巨",
@@ -65,7 +65,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "85.0 $/lb",
-      "implied_price": "$ 6487268.39",
+      "implied_price": "$ 113.78",
       "cost_line": "35.0 $/lb",
       "signal": "观望"
     },
@@ -76,7 +76,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "95000.0 元/吨",
-      "implied_price": "$ 19384663.01",
+      "implied_price": "$ 49.29",
       "cost_line": "68000.0 元/吨",
       "signal": "观望"
     },
@@ -87,9 +87,9 @@
       "stock_price": "HK$ 21.74",
       "change_pct": "-3.29%",
       "commodity_price": "95000.0 元/吨",
-      "implied_price": "HK$ 5970160.99",
+      "implied_price": "HK$ 12.17",
       "cost_line": "75000.0 元/吨",
-      "signal": "🟢 黄金级低吸 (4大模型重度低估+超跌)"
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
     },
     {
       "category": "美股油气",
@@ -98,7 +98,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "75.0 $/桶",
-      "implied_price": "$ 19091043.55",
+      "implied_price": "$ 138.45",
       "cost_line": "32.0 $/桶",
       "signal": "观望"
     },
@@ -109,7 +109,7 @@
       "stock_price": "HK$ 23.36",
       "change_pct": "-2.34%",
       "commodity_price": "75.0 $/桶",
-      "implied_price": "HK$ 4019895.63",
+      "implied_price": "HK$ 22.64",
       "cost_line": "30.0 $/桶",
       "signal": "观望"
     },
@@ -120,7 +120,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "1750.0 元/吨",
-      "implied_price": "$ 189539138.91",
+      "implied_price": "$ 699.31",
       "cost_line": "850.0 元/吨",
       "signal": "观望"
     },
@@ -131,9 +131,9 @@
       "stock_price": "HK$ 39.0",
       "change_pct": "-3.03%",
       "commodity_price": "840.0 元/吨",
-      "implied_price": "HK$ 8080850.44",
+      "implied_price": "HK$ 43.65",
       "cost_line": "360.0 元/吨",
-      "signal": "🟢 黄金级低吸 (4大模型重度低估+超跌)"
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
     },
     {
       "category": "美股黄金",
@@ -142,7 +142,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "2720.0 $/盎司",
-      "implied_price": "$ 250994065.15",
+      "implied_price": "$ 2411.2",
       "cost_line": "1200.0 $/盎司",
       "signal": "观望"
     },
@@ -153,7 +153,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "32.5 $/盎司",
-      "implied_price": "$ 30538125.63",
+      "implied_price": "$ 148.27",
       "cost_line": "21.0 $/盎司",
       "signal": "观望"
     },
@@ -164,7 +164,7 @@
       "stock_price": "$ nan",
       "change_pct": "nan%",
       "commodity_price": "320.0 $/吨",
-      "implied_price": "$ 15750037.16",
+      "implied_price": "$ 38.47",
       "cost_line": "210.0 $/吨",
       "signal": "观望"
     }
@@ -177,7 +177,7 @@
       "stock_price": "HK$ 16.37",
       "change_pct": "-6.88%",
       "commodity_price": "2720.0 $/盎司",
-      "implied_price": "HK$ 12936134.38",
+      "implied_price": "HK$ 125.68",
       "cost_line": "1250.0 $/盎司",
       "signal": "🟢 黄金级低吸 (4大模型重度低估+超跌)"
     }
