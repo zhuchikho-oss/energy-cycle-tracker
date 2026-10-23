@@ -1,96 +1,67 @@
 {
-  "updated_at": "2026-10-23 00:40:07",
-  "total_items": 15,
+  "updated_at": "2026-10-23 01:03:19",
+  "top_demand_material": "原油/石油 (热度指数: 95)",
+  "demand_dashboard": {
+    "oil": {
+      "price": 75.0,
+      "unit": "$/桶",
+      "name": "原油/石油",
+      "demand_score": 95,
+      "desc": "全球工业第一能源，日需求突破 1.02 亿桶"
+    },
+    "copper": {
+      "price": 4.35,
+      "unit": "$/磅",
+      "name": "精炼铜",
+      "demand_score": 92,
+      "desc": "电网升级与 AI 数据中心硬件核心，供需缺口扩大"
+    },
+    "coal_coking": {
+      "price": 1750.0,
+      "unit": "元/吨",
+      "name": "冶金焦煤",
+      "demand_score": 88,
+      "desc": "全球钢铁高炉开工刚性需求，高品质出口紧缺"
+    },
+    "uranium": {
+      "price": 85.0,
+      "unit": "$/lb",
+      "name": "天然铀",
+      "demand_score": 85,
+      "desc": "全球核电重启与数据中心核能微堆需求爆发"
+    },
+    "coal_thermal": {
+      "price": 840.0,
+      "unit": "元/吨",
+      "name": "动力煤",
+      "demand_score": 82,
+      "desc": "火电基底托底能源，基建与迎峰度夏/冬刚需"
+    },
+    "gold": {
+      "price": 2720.0,
+      "unit": "$/盎司",
+      "name": "现货黄金",
+      "demand_score": 80,
+      "desc": "全球央行去美元化购金潮，避险信用对冲"
+    },
+    "aluminum": {
+      "price": 2500.0,
+      "unit": "$/吨",
+      "name": "原铝",
+      "demand_score": 78,
+      "desc": "光伏支架与汽车轻量化用铝需求平稳增长"
+    },
+    "lithium": {
+      "price": 95000.0,
+      "unit": "元/吨",
+      "name": "碳酸锂",
+      "demand_score": 72,
+      "desc": "储能与储能电池采买探底复苏，筑底蓄势"
+    }
+  },
+  "total_items": 9,
   "discovered_count": 1,
   "data": [
-    {
-      "category": "铜金超巨",
-      "ticker": "2899.HK",
-      "stock_name": "紫金矿业",
-      "stock_price": "HK$ 29.1",
-      "change_pct": "-5.21%",
-      "commodity_price": "4.35 $/磅",
-      "implied_price": "HK$ 1.7",
-      "cost_line": "2.2 $/磅",
-      "signal": "🟢 技术面低吸 (偏离20日均线)"
-    },
-    {
-      "category": "美股纯铜",
-      "ticker": "FCX",
-      "stock_name": "麦克莫兰铜金",
-      "stock_price": "$ nan",
-      "change_pct": "nan%",
-      "commodity_price": "4.35 $/磅",
-      "implied_price": "$ 77.12",
-      "cost_line": "1.6 $/磅",
-      "signal": "观望"
-    },
-    {
-      "category": "低成本铜",
-      "ticker": "SCCO",
-      "stock_name": "南方铜业",
-      "stock_price": "$ nan",
-      "change_pct": "nan%",
-      "commodity_price": "4.35 $/磅",
-      "implied_price": "$ 96.17",
-      "cost_line": "1.2 $/磅",
-      "signal": "观望"
-    },
-    {
-      "category": "美股铝业",
-      "ticker": "AA",
-      "stock_name": "美国铝业",
-      "stock_price": "$ nan",
-      "change_pct": "nan%",
-      "commodity_price": "2500.0 $/吨",
-      "implied_price": "$ 38.21",
-      "cost_line": "2100.0 $/吨",
-      "signal": "观望"
-    },
-    {
-      "category": "天然铀纯标",
-      "ticker": "1164.HK",
-      "stock_name": "中广核矿业",
-      "stock_price": "HK$ 1.975",
-      "change_pct": "-5.28%",
-      "commodity_price": "85.0 $/lb",
-      "implied_price": "HK$ 0.5",
-      "cost_line": "40.0 $/lb",
-      "signal": "🔴 追高预警 (透支基本面/严重超买)"
-    },
-    {
-      "category": "美股铀巨",
-      "ticker": "CCJ",
-      "stock_name": "Cameco",
-      "stock_price": "$ nan",
-      "change_pct": "nan%",
-      "commodity_price": "85.0 $/lb",
-      "implied_price": "$ 113.78",
-      "cost_line": "35.0 $/lb",
-      "signal": "观望"
-    },
-    {
-      "category": "美股锂业",
-      "ticker": "ALB",
-      "stock_name": "雅保锂业",
-      "stock_price": "$ nan",
-      "change_pct": "nan%",
-      "commodity_price": "95000.0 元/吨",
-      "implied_price": "$ 49.29",
-      "cost_line": "68000.0 元/吨",
-      "signal": "观望"
-    },
-    {
-      "category": "锂盐龙头",
-      "ticker": "1772.HK",
-      "stock_name": "赣锋锂业",
-      "stock_price": "HK$ 21.74",
-      "change_pct": "-3.29%",
-      "commodity_price": "95000.0 元/吨",
-      "implied_price": "HK$ 12.17",
-      "cost_line": "75000.0 元/吨",
-      "signal": "🟢 技术面低吸 (偏离20日均线)"
-    },
     {
       "category": "美股油气",
       "ticker": "OXY",
@@ -100,6 +71,7 @@
       "commodity_price": "75.0 $/桶",
       "implied_price": "$ 138.45",
       "cost_line": "32.0 $/桶",
+      "demand_score": 95,
       "signal": "观望"
     },
     {
@@ -111,6 +83,31 @@
       "commodity_price": "75.0 $/桶",
       "implied_price": "HK$ 22.64",
       "cost_line": "30.0 $/桶",
+      "demand_score": 95,
+      "signal": "观望"
+    },
+    {
+      "category": "铜金超巨",
+      "ticker": "2899.HK",
+      "stock_name": "紫金矿业",
+      "stock_price": "HK$ 29.1",
+      "change_pct": "-5.21%",
+      "commodity_price": "4.35 $/磅",
+      "implied_price": "HK$ 1.7",
+      "cost_line": "2.2 $/磅",
+      "demand_score": 92,
+      "signal": "🟢 技术面低吸 (偏离20日均线)"
+    },
+    {
+      "category": "美股纯铜",
+      "ticker": "FCX",
+      "stock_name": "麦克莫兰铜金",
+      "stock_price": "$ nan",
+      "change_pct": "nan%",
+      "commodity_price": "4.35 $/磅",
+      "implied_price": "$ 77.12",
+      "cost_line": "1.6 $/磅",
+      "demand_score": 92,
       "signal": "观望"
     },
     {
@@ -122,6 +119,31 @@
       "commodity_price": "1750.0 元/吨",
       "implied_price": "$ 699.31",
       "cost_line": "850.0 元/吨",
+      "demand_score": 88,
+      "signal": "观望"
+    },
+    {
+      "category": "天然铀纯标",
+      "ticker": "1164.HK",
+      "stock_name": "中广核矿业",
+      "stock_price": "HK$ 1.975",
+      "change_pct": "-5.28%",
+      "commodity_price": "85.0 $/lb",
+      "implied_price": "HK$ 0.5",
+      "cost_line": "40.0 $/lb",
+      "demand_score": 85,
+      "signal": "🔴 追高预警 (透支基本面/严重超买)"
+    },
+    {
+      "category": "美股铀巨",
+      "ticker": "CCJ",
+      "stock_name": "Cameco",
+      "stock_price": "$ nan",
+      "change_pct": "nan%",
+      "commodity_price": "85.0 $/lb",
+      "implied_price": "$ 113.78",
+      "cost_line": "35.0 $/lb",
+      "demand_score": 85,
       "signal": "观望"
     },
     {
@@ -133,39 +155,19 @@
       "commodity_price": "840.0 元/吨",
       "implied_price": "HK$ 43.65",
       "cost_line": "360.0 元/吨",
+      "demand_score": 82,
       "signal": "🟢 技术面低吸 (偏离20日均线)"
     },
     {
-      "category": "美股黄金",
-      "ticker": "NEM",
-      "stock_name": "纽蒙特黄金",
+      "category": "美股锂业",
+      "ticker": "ALB",
+      "stock_name": "雅保锂业",
       "stock_price": "$ nan",
       "change_pct": "nan%",
-      "commodity_price": "2720.0 $/盎司",
-      "implied_price": "$ 2411.2",
-      "cost_line": "1200.0 $/盎司",
-      "signal": "观望"
-    },
-    {
-      "category": "美股纯白银",
-      "ticker": "EXK",
-      "stock_name": "奋进银业",
-      "stock_price": "$ nan",
-      "change_pct": "nan%",
-      "commodity_price": "32.5 $/盎司",
-      "implied_price": "$ 148.27",
-      "cost_line": "21.0 $/盎司",
-      "signal": "观望"
-    },
-    {
-      "category": "美股化肥",
-      "ticker": "MOS",
-      "stock_name": "美盛化肥",
-      "stock_price": "$ nan",
-      "change_pct": "nan%",
-      "commodity_price": "320.0 $/吨",
-      "implied_price": "$ 38.47",
-      "cost_line": "210.0 $/吨",
+      "commodity_price": "95000.0 元/吨",
+      "implied_price": "$ 49.29",
+      "cost_line": "68000.0 元/吨",
+      "demand_score": 72,
       "signal": "观望"
     }
   ],
@@ -179,6 +181,7 @@
       "commodity_price": "2720.0 $/盎司",
       "implied_price": "HK$ 125.68",
       "cost_line": "1250.0 $/盎司",
+      "demand_score": 80,
       "signal": "🟢 黄金级低吸 (4大模型重度低估+超跌)"
     }
   ]
