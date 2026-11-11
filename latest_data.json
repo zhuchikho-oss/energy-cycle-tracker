@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-10 16:31:53",
+  "updated_at": "2026-11-11 16:27:40",
   "top_demand_material": "原油/石油 (热度指数: 95)",
   "demand_dashboard": {
     "oil": {
@@ -60,13 +60,13 @@
     }
   },
   "total_items": 9,
-  "discovered_count": 2,
+  "discovered_count": 1,
   "data": [
     {
       "category": "美股油气",
       "ticker": "OXY",
       "stock_name": "西方石油",
-      "stock_price": "$ 55.9",
+      "stock_price": "$ 57.045",
       "change_pct": "0.25%",
       "commodity_price": "75.0 $/桶",
       "implied_price": "$ 138.45",
@@ -102,20 +102,20 @@
       "category": "美股纯铜",
       "ticker": "FCX",
       "stock_name": "麦克莫兰铜金",
-      "stock_price": "$ 60.17",
-      "change_pct": "-3.47%",
+      "stock_price": "$ 61.89",
+      "change_pct": "2.62%",
       "commodity_price": "4.35 $/磅",
       "implied_price": "$ 77.12",
       "cost_line": "1.6 $/磅",
       "demand_score": 92,
-      "signal": "🟢 黄金级低吸 (4大模型重度低估+超跌)"
+      "signal": "观望"
     },
     {
       "category": "美股焦煤",
       "ticker": "AMR",
       "stock_name": "Alpha焦煤",
-      "stock_price": "$ 154.83",
-      "change_pct": "-0.21%",
+      "stock_price": "$ 157.23",
+      "change_pct": "-0.26%",
       "commodity_price": "1750.0 元/吨",
       "implied_price": "$ 699.31",
       "cost_line": "850.0 元/吨",
@@ -138,13 +138,13 @@
       "category": "美股铀巨",
       "ticker": "CCJ",
       "stock_name": "Cameco",
-      "stock_price": "$ 72.91",
-      "change_pct": "-3.26%",
+      "stock_price": "$ 74.92",
+      "change_pct": "2.81%",
       "commodity_price": "85.0 $/lb",
       "implied_price": "$ 113.78",
       "cost_line": "35.0 $/lb",
       "demand_score": 85,
-      "signal": "🟢 黄金级低吸 (4大模型重度低估+超跌)"
+      "signal": "观望"
     },
     {
       "category": "防守动力煤",
@@ -162,8 +162,8 @@
       "category": "美股锂业",
       "ticker": "ALB",
       "stock_name": "雅保锂业",
-      "stock_price": "$ 94.67",
-      "change_pct": "-4.49%",
+      "stock_price": "$ 96.815",
+      "change_pct": "1.99%",
       "commodity_price": "95000.0 元/吨",
       "implied_price": "$ 49.29",
       "cost_line": "68000.0 元/吨",
@@ -174,22 +174,10 @@
   "discovered_data": [
     {
       "category": "美股铀",
-      "ticker": "UEC",
-      "stock_name": "美国铀能源",
-      "stock_price": "$ 7.235",
-      "change_pct": "-5.05%",
-      "commodity_price": "85.0 $/lb",
-      "implied_price": "$ 16.07",
-      "cost_line": "38.0 $/lb",
-      "demand_score": 85,
-      "signal": "🟢 黄金级低吸 (4大模型重度低估+超跌)"
-    },
-    {
-      "category": "美股铀",
       "ticker": "UUUU",
       "stock_name": "能源燃料(Energy Fuels)",
-      "stock_price": "$ 6.725",
-      "change_pct": "-8.0%",
+      "stock_price": "$ 7.08",
+      "change_pct": "5.04%",
       "commodity_price": "85.0 $/lb",
       "implied_price": "$ 23.35",
       "cost_line": "42.0 $/lb",
